@@ -20,6 +20,9 @@ shotgunEquiped = false
 -- Ar command
 
 RegisterCommand('ar', function()
+    local ped = GetPlayerPed(-1)
+    local netID = NetworkGetNetworkIdFromEntity(PlayerPedId(PlayerId()))
+    arEquiped = false
     local currentVeh = GetVehiclePedIsIn(ped, false)
     local isPoliceVeh = tostring(GetVehicleClass(currentVeh))
     if isPoliceVeh == "18" then
@@ -29,6 +32,7 @@ RegisterCommand('ar', function()
             GiveWeaponToPed(ped, GetHashKey(config.arName), config.arAmmoCount, false, false)
             GiveWeaponComponentToPed(ped, GetHashKey(config.arName), GetHashKey("COMPONENT_AT_AR_FLSH"))
             GiveWeaponComponentToPed(ped, GetHashKey(config.arName), GetHashKey("COMPONENT_AT_AR_AFGRIP"))
+            GiveWeaponComponentToPed(ped, GetHashKey(config.arName), GetHashKey("COMPONENT_AT_SCOPE_MEDIUM"))
             arEquiped = true
             notify("~b~Weapons: ~c~Rifle ~C~unracked~c~ from your cruiser!")
         else
@@ -46,6 +50,9 @@ end)
 -- Shotgun command
 
 RegisterCommand('shotgun', function()
+    local ped = GetPlayerPed(-1)
+    local netID = NetworkGetNetworkIdFromEntity(PlayerPedId(PlayerId()))
+    shotgunEquiped = false
     local currentVeh = GetVehiclePedIsIn(ped, false)
     local isPoliceVeh = tostring(GetVehicleClass(currentVeh))
     if isPoliceVeh == "18" then
