@@ -22,7 +22,6 @@ shotgunEquiped = false
 RegisterCommand('ar', function()
     local ped = GetPlayerPed(-1)
     local netID = NetworkGetNetworkIdFromEntity(PlayerPedId(PlayerId()))
-    arEquiped = false
     local currentVeh = GetVehiclePedIsIn(ped, false)
     local isPoliceVeh = tostring(GetVehicleClass(currentVeh))
     if isPoliceVeh == "18" then
@@ -52,7 +51,6 @@ end)
 RegisterCommand('shotgun', function()
     local ped = GetPlayerPed(-1)
     local netID = NetworkGetNetworkIdFromEntity(PlayerPedId(PlayerId()))
-    shotgunEquiped = false
     local currentVeh = GetVehiclePedIsIn(ped, false)
     local isPoliceVeh = tostring(GetVehicleClass(currentVeh))
     if isPoliceVeh == "18" then
